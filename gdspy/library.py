@@ -2714,7 +2714,7 @@ class GdsLibrary(object):
                         ref.ref_cell = self.cells[ref.ref_cell]
             # PROPATTR
             elif record[0] == 0x2B:
-                attr = record[1][0]
+                attr = record[1][0] & 0xFFFF  # Convert to unsigned 16-bit integer
             # PROPVALUE
             elif record[0] == 0x2C:
                 properties[attr] = record[1]
