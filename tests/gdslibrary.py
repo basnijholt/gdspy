@@ -361,6 +361,8 @@ def test_properties(tmpdir):
     rect = gdspy.Rectangle((0, 0), (2, 1))
     rect.properties[1] = "test1"
     rect.properties[126] = "test_126"
+    # Add a property with a key value ≥2**16//2, see PR #240
+    rect.properties[2**16//2] = "test_large_key"
     lbl = gdspy.Label("LABEL", (20, 20))
     lbl.properties[2] = "test2"
     lbl.properties[22] = "test22"
